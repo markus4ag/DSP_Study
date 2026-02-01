@@ -2,8 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io import wavfile
 
+import os
+
+# Получаем путь к папке, в которой лежит этот скрипт
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# Соединяем путь к папке с именем файла
+file_path = os.path.join(script_dir, "sound.wav")
+
+# Теперь загружаем, используя полный путь
 # 1. Загружаем файл
-sample_rate, data = wavfile.read("sound.wav")
+sample_rate, data = wavfile.read(file_path)
+
 
 # Если файл стерео (2 канала), берем только один
 if len(data.shape) > 1:
